@@ -159,7 +159,36 @@
   @media(max-width:520px){ .bar .lbl{width:96px; font-size:.8rem} }
 
   .gallery{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:22px}
+
+  /* ---- Case study ---- */
+  .case{
+    background:var(--card); border:1px solid #f0e8dc; border-radius:16px; overflow:hidden;
+    box-shadow:0 6px 24px rgba(0,0,0,.05); margin-top:20px;
+  }
+  .case-head{
+    display:flex; flex-wrap:wrap; align-items:center; gap:10px 14px;
+    padding:16px 22px; background:#faf4ec; border-bottom:1px solid #f0e8dc;
+  }
+  .case-head .cico{font-size:1.5rem; line-height:1}
+  .case-head .ct{margin:0; font-size:1.1rem; font-weight:800; flex:1 1 220px}
+  .chips{display:flex; gap:6px; flex-wrap:wrap}
+  .chip{font-size:.78rem; font-weight:700; padding:3px 11px; border-radius:999px; color:#fff}
+  .chip.cd{background:var(--d)} .chip.ci{background:var(--i)} .chip.cs{background:var(--s)} .chip.cc{background:var(--c)}
+  .case-steps{display:grid; grid-template-columns:repeat(2,1fr)}
+  .case-steps .st{padding:15px 22px; border-top:1px solid #f4ecdf}
+  .case-steps .st:nth-child(even){border-left:1px solid #f4ecdf}
+  .st h5{margin:0 0 6px; font-size:.78rem; letter-spacing:.05em; text-transform:uppercase;
+    color:var(--muted); display:flex; align-items:center; gap:7px}
+  .st p{margin:0; font-size:.96rem; color:#4f483f}
+  .st.res{background:#f2faf4}
+  .st.res h5{color:#2e8b57}
+  @media(max-width:620px){
+    .case-steps{grid-template-columns:1fr}
+    .case-steps .st:nth-child(even){border-left:none}
+  }
+
   footer{text-align:center; color:var(--muted); padding:30px 20px 60px; font-size:.9rem}
+  footer .disclaimer{max-width:680px; margin:14px auto 0; font-size:.82rem; line-height:1.6; opacity:.85}
 
   @media(max-width:600px){
     header h1{font-size:1.9rem}
@@ -211,6 +240,7 @@
   <a class="no" href="#cauhoi">Câu hỏi với DISC</a>
   <a class="no" href="#docvi">4 câu hỏi đọc vị</a>
   <a class="no" href="#giaotiep">Giao tiếp với DISC</a>
+  <a class="no" href="#casestudy">Case study</a>
   <a class="no" href="#phattrien">Vùng phát triển</a>
   <a class="no" href="#hinhanh">Hình ảnh tổng hợp</a>
   <a class="no" href="#test">🧭 Làm bài test</a>
@@ -280,6 +310,7 @@
         <div><h2>Dominance — Người dẫn dắt</h2><p class="tag">Dẫn dắt · Tiên phong · Tạo kết quả</p></div>
       </div>
       <div class="card-body">
+        <p style="margin-top:0;color:var(--muted)">Người hướng đến mục tiêu, kết quả và tốc độ.</p>
         <div class="grid">
           <div class="item"><h4><span class="ic">🎯</span> Điều họ quan tâm</h4><p>Mục tiêu, kết quả, hiệu quả.</p></div>
           <div class="item"><h4><span class="ic">🏆</span> Động lực</h4><p>Thành tựu – chiến thắng – chinh phục.</p></div>
@@ -308,6 +339,7 @@
         <div><h2>Influence — Người truyền cảm hứng</h2><p class="tag">Kết nối · Lan tỏa · Truyền cảm hứng</p></div>
       </div>
       <div class="card-body">
+        <p style="margin-top:0;color:var(--muted)">Người hướng đến con người, cảm xúc và sự kết nối.</p>
         <div class="grid">
           <div class="item"><h4><span class="ic">🫂</span> Điều họ quan tâm</h4><p>Con người, niềm vui, kết nối.</p></div>
           <div class="item"><h4><span class="ic">📣</span> Động lực</h4><p>Ghi nhận – kết nối – truyền cảm hứng.</p></div>
@@ -333,7 +365,7 @@
     <div class="card s">
       <div class="card-head">
         <div class="badge">S</div>
-        <div><h2>Steadiness — Người đồng hành đáng tin cậy</h2><p class="tag">Ổn định · Đồng hành · Bình yên · (Màu Tím Lavender)</p></div>
+        <div><h2>Steadiness — Người đồng hành đáng tin cậy</h2><p class="tag">Ổn định · Đồng hành · Bình yên</p></div>
       </div>
       <div class="card-body">
         <p style="margin-top:0;color:var(--muted)">Người hướng đến sự ổn định, hòa hợp và các mối quan hệ lâu dài.</p>
@@ -361,7 +393,7 @@
     <div class="card c">
       <div class="card-head">
         <div class="badge">C</div>
-        <div><h2>Conscientiousness — Người bảo vệ chất lượng</h2><p class="tag">Chính xác · Chất lượng · Chiều sâu · (Màu Vàng Gold)</p></div>
+        <div><h2>Conscientiousness — Người bảo vệ chất lượng</h2><p class="tag">Chính xác · Chất lượng · Chiều sâu</p></div>
       </div>
       <div class="card-body">
         <p style="margin-top:0;color:var(--muted)">Người hướng đến chất lượng, quy trình và độ chính xác.</p>
@@ -484,6 +516,80 @@
     </div>
   </section>
 
+  <!-- CASE STUDY -->
+  <section id="casestudy">
+    <div class="intro">
+      <h2>Case study — Tình huống áp dụng DISC thành công</h2>
+      <p>Giá trị của DISC không nằm ở việc thuộc lý thuyết, mà ở chỗ <strong>đổi cách tiếp cận một con người
+      cụ thể</strong>. Dưới đây là bốn tình huống minh họa quen thuộc trong bán hàng, lãnh đạo, hôn nhân và
+      làm việc nhóm — theo cùng một công thức áp dụng:</p>
+      <div class="tipbar"><b>Công thức 4 bước:</b> Quan sát hành vi → Đọc vị nhóm DISC → Điều chỉnh cách tiếp cận theo “ngôn ngữ” của họ → Đồng hành để đạt kết quả chung.</div>
+
+      <!-- Case 1 -->
+      <div class="case">
+        <div class="case-head">
+          <span class="cico">🛒</span>
+          <h3 class="ct">1 · Bán hàng — chốt đơn với khách phân tích</h3>
+          <span class="chips"><span class="chip ci">Tư vấn: I</span><span class="chip cc">Khách: C</span></span>
+        </div>
+        <div class="case-steps">
+          <div class="st"><h5>⚡ Tình huống</h5><p>Một tư vấn viên nhiệt tình giới thiệu sản phẩm bằng nhiều câu chuyện và cảm xúc, nhưng khách cứ chần chừ, hỏi đi hỏi lại và không chốt.</p></div>
+          <div class="st"><h5>🔍 Đọc vị DISC</h5><p>Khách liên tục hỏi “Có số liệu không? Bảo hành thế nào? So với loại kia ra sao?” → thiên <b>C</b>: cần dữ liệu và bằng chứng, không bị thuyết phục bằng cảm xúc.</p></div>
+          <div class="st"><h5>🛠️ Cách áp dụng</h5><p>Tư vấn viên ngừng “kể chuyện”, gửi bảng so sánh thông số, chính sách bảo hành và đánh giá thực tế để khách tự đối chiếu.</p></div>
+          <div class="st res"><h5>✅ Kết quả</h5><p>Khách yên tâm và chốt đơn sau 2 ngày — vì được cung cấp <b>đủ cơ sở để tin</b>, thay vì bị hối thúc.</p></div>
+        </div>
+      </div>
+
+      <!-- Case 2 -->
+      <div class="case">
+        <div class="case-head">
+          <span class="cico">🧭</span>
+          <h3 class="ct">2 · Lãnh đạo — giữ chân nhân viên tận tâm</h3>
+          <span class="chips"><span class="chip cd">Quản lý: D</span><span class="chip cs">Nhân viên: S</span></span>
+        </div>
+        <div class="case-steps">
+          <div class="st"><h5>⚡ Tình huống</h5><p>Một quản lý giao việc dồn dập, deadline gấp. Một nhân viên ngày càng im lặng, chậm lại và có dấu hiệu muốn nghỉ.</p></div>
+          <div class="st"><h5>🔍 Đọc vị DISC</h5><p>Nhân viên không phản kháng ra mặt mà rút lui, ngại va chạm, cần ổn định và an toàn → thiên <b>S</b>; áp lực tốc độ của sếp <b>D</b> khiến họ căng thẳng.</p></div>
+          <div class="st"><h5>🛠️ Cách áp dụng</h5><p>Quản lý giải thích lý do &amp; lộ trình thay đổi, ghi nhận sự tận tâm, cho thời gian thích nghi và hỏi “em cần hỗ trợ gì?”.</p></div>
+          <div class="st res"><h5>✅ Kết quả</h5><p>Nhân viên gắn bó trở lại và chủ động hơn; nhóm <b>giảm xung đột ngầm</b> và giữ được người giỏi.</p></div>
+        </div>
+      </div>
+
+      <!-- Case 3 -->
+      <div class="case">
+        <div class="case-head">
+          <span class="cico">💞</span>
+          <h3 class="ct">3 · Hôn nhân — lắng nghe trước, giải pháp sau</h3>
+          <span class="chips"><span class="chip cd">Chồng: D</span><span class="chip cs">Vợ: S</span></span>
+        </div>
+        <div class="case-steps">
+          <div class="st"><h5>⚡ Tình huống</h5><p>Mỗi lần vợ chia sẻ chuyện buồn, chồng lập tức “đưa giải pháp”. Vợ thấy không được lắng nghe; chồng thấy “đã giúp mà vợ vẫn buồn”.</p></div>
+          <div class="st"><h5>🔍 Đọc vị DISC</h5><p>Chồng <b>D</b> yêu bằng cách giải quyết vấn đề thật nhanh; vợ <b>S</b> cần được lắng nghe và thấu cảm <em>trước</em> khi nghe giải pháp.</p></div>
+          <div class="st"><h5>🛠️ Cách áp dụng</h5><p>Chồng tập một câu hỏi nhỏ trước khi phản hồi: “Em muốn anh chỉ lắng nghe, hay muốn anh góp ý?”.</p></div>
+          <div class="st res"><h5>✅ Kết quả</h5><p>Những cuộc trò chuyện bớt căng; cả hai hiểu rằng họ <b>yêu nhau bằng hai ngôn ngữ khác nhau</b>, không phải vô tâm.</p></div>
+        </div>
+      </div>
+
+      <!-- Case 4 -->
+      <div class="case">
+        <div class="case-head">
+          <span class="cico">🤝</span>
+          <h3 class="ct">4 · Làm việc nhóm — phân vai theo thế mạnh</h3>
+          <span class="chips"><span class="chip ci">Thành viên: I</span><span class="chip cc">Thành viên: C</span></span>
+        </div>
+        <div class="case-steps">
+          <div class="st"><h5>⚡ Tình huống</h5><p>Dự án ra mắt sản phẩm liên tục trễ: một bạn nhiều ý tưởng nhưng thiếu kiểm soát chi tiết; một bạn cẩn thận nhưng bị cho là “chậm”.</p></div>
+          <div class="st"><h5>🔍 Đọc vị DISC</h5><p>Bạn <b>I</b> mạnh ở kết nối &amp; sáng tạo; bạn <b>C</b> mạnh ở chuẩn xác &amp; quy trình — hai thế mạnh <b>bổ sung</b> cho nhau thay vì xung khắc.</p></div>
+          <div class="st"><h5>🛠️ Cách áp dụng</h5><p>Giao <b>I</b> phụ trách truyền thông &amp; làm việc với khách hàng; giao <b>C</b> phụ trách kiểm thử, tiêu chuẩn &amp; theo dõi tiến độ chi tiết.</p></div>
+          <div class="st res"><h5>✅ Kết quả</h5><p>Dự án ra mắt đúng hạn, vừa hấp dẫn vừa ít lỗi — đúng tinh thần <b>“I tạo sức hút, C giữ chất lượng”</b>.</p></div>
+        </div>
+      </div>
+
+      <div class="quote" style="margin-top:24px">“Một tình huống không thay đổi vì người kia thay đổi, mà vì ta thay đổi cách mình tiếp cận họ.”</div>
+      <p style="margin-bottom:0;color:var(--muted);font-size:.9rem">* Các tình huống trên là <em>ví dụ minh họa điển hình</em> đã được khái quát hóa, nhằm minh họa cách áp dụng DISC — không mô tả một cá nhân cụ thể nào.</p>
+    </div>
+  </section>
+
   <!-- VUNG PHAT TRIEN -->
   <section id="phattrien">
     <div class="intro">
@@ -541,8 +647,10 @@
     <svg class="kt-logo" viewBox="0 0 120 120" width="42" height="42" role="img" aria-label="KT Academy"><use href="#ktlogo"/></svg>
     <span class="word"><span class="name"><b>KT</b> Academy</span><span class="sub">Kiến thức dẫn lối · Tư duy đổi mới</span></span>
   </a>
-  <p>Tổng hợp kiến thức DISC · Hiểu mình – Hiểu người – Kết nối yêu thương 💛</p>
-  <p>© KT Academy</p>
+  <p>Tổng hợp kiến thức DISC · Hiểu mình — Hiểu người — Kết nối — Yêu thương 💛</p>
+  <p class="disclaimer">DISC là công cụ tham khảo giúp thấu hiểu và đồng hành, không phải để dán nhãn hay đánh giá con người.
+  Kết quả bài test chỉ mang tính tự khám phá, không thay thế tư vấn chuyên môn.</p>
+  <p>© KT Academy · Kiến thức dẫn lối — Tư duy đổi mới</p>
 </footer>
 
 <script>
