@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tổng hợp kiến thức DISC — Hiểu mình, Hiểu người</title>
+<link rel="icon" type="image/svg+xml" href="_brand/logo-kt.svg">
+<link rel="icon" type="image/png" sizes="64x64" href="_brand/logo-kt-64.png">
+<style>
+  :root{
+    --d:#e8743b; --i:#f3b730; --s:#9b7ed0; --c:#3b7fd6;
+    --bg:#fdf8f2; --card:#ffffff; --ink:#3a342e; --muted:#7c7468;
+    --brand-navy:#0a1830; --brand-gold:#e0a52e;  /* màu chuẩn bộ nhận diện KT Academy */
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; font-family:"Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
+    background:var(--bg); color:var(--ink); line-height:1.65;
+  }
+  header{
+    text-align:center; padding:54px 20px 40px;
+    background:linear-gradient(135deg,#fff3e6 0%,#fbeefc 50%,#e9f1fc 100%);
+    border-bottom:1px solid #efe6da;
+  }
+  /* ---- KT Academy logo ---- */
+  .logo{
+    display:inline-flex; align-items:center; gap:12px; text-decoration:none;
+    color:inherit; margin-bottom:18px;
+  }
+  .logo .kt-logo{flex:0 0 auto; filter:drop-shadow(0 8px 16px rgba(45,212,191,.4))}
+  .logo .word{display:flex; flex-direction:column; line-height:1.15; text-align:left}
+  .logo .word .name{font-weight:800; font-size:1.25rem; letter-spacing:.5px; color:var(--brand-navy)}
+  .logo .word .name b{color:var(--brand-navy); font-weight:800}
+  .logo .word .sub{font-size:.8rem; font-weight:600; letter-spacing:.4px; color:var(--brand-gold)}
+  footer .logo{margin-bottom:14px}
+  footer .logo .word .name{font-size:1.05rem}
+  footer .logo .kt-logo{width:42px; height:42px}
+
+  header h1{margin:0 0 8px; font-size:2.5rem; letter-spacing:.5px}
+  header h1 .d{color:var(--d)} header h1 .i{color:var(--i)}
+  header h1 .s{color:var(--s)} header h1 .c{color:var(--c)}
+  header p{margin:6px 0; color:var(--muted); font-size:1.05rem}
+  .wrap{max-width:1100px; margin:0 auto; padding:32px 20px 80px}
+
+  nav{
+    display:flex; flex-wrap:wrap; gap:10px; justify-content:center;
+    margin:-22px auto 36px; max-width:1100px; padding:0 20px;
+  }
+  nav a{
+    text-decoration:none; color:#fff; padding:10px 18px; border-radius:999px;
+    font-weight:600; font-size:.95rem; box-shadow:0 3px 10px rgba(0,0,0,.08);
+    transition:transform .15s;
+  }
+  nav a:hover{transform:translateY(-2px)}
+  nav a.nd{background:var(--d)} nav a.ni{background:var(--i)}
+  nav a.ns{background:var(--s)} nav a.nc{background:var(--c)}
+  nav a.no{background:#5a8f6b}
+
+  section{margin-bottom:48px; scroll-margin-top:20px}
+  .intro{
+    background:var(--card); border-radius:18px; padding:28px 30px;
+    box-shadow:0 6px 24px rgba(0,0,0,.05); border:1px solid #f0e8dc;
+  }
+  .intro h2{margin-top:0}
+  .quote{
+    background:#f7f1ff; border-left:4px solid var(--s); padding:14px 20px;
+    border-radius:10px; margin:18px 0; font-style:italic; color:#5b4d72;
+  }
+
+  .card{
+    background:var(--card); border-radius:18px; overflow:hidden;
+    box-shadow:0 6px 24px rgba(0,0,0,.06); border:1px solid #f0e8dc;
+  }
+  .card-head{
+    display:flex; align-items:center; gap:16px; padding:22px 28px; color:#fff;
+  }
+  .card-head .badge{
+    font-size:2.4rem; font-weight:800; width:64px; height:64px; flex:none;
+    display:flex; align-items:center; justify-content:center;
+    background:rgba(255,255,255,.22); border-radius:16px;
+  }
+  .card-head h2{margin:0; font-size:1.6rem}
+  .card-head .tag{margin:2px 0 0; opacity:.92; font-weight:500}
+  .d .card-head{background:var(--d)} .i .card-head{background:var(--i)}
+  .s .card-head{background:var(--s)} .c .card-head{background:var(--c)}
+
+  .card-body{padding:26px 28px}
+  .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px}
+  .item{
+    background:#fbf7f0; border-radius:12px; padding:16px 18px; border:1px solid #f1e9dc;
+  }
+  .item h4{margin:0 0 6px; font-size:1rem; display:flex; align-items:center; gap:8px}
+  .item p{margin:0; color:#554f47; font-size:.95rem}
+  .item .ic{font-size:1.2rem}
+  .strong h4{color:#2e8b57} .weak h4{color:#c0392b}
+  .blind h4{color:#b8860b}
+
+  .tipbar{
+    margin-top:20px; background:#fff7ec; border:1px dashed #e8a23b;
+    border-radius:12px; padding:14px 20px; font-size:.97rem;
+  }
+  .tipbar b{color:#c47a1a}
+
+  figure{margin:22px 0 0; text-align:center}
+  figure img{
+    max-width:100%; height:auto; border-radius:14px;
+    box-shadow:0 8px 28px rgba(0,0,0,.12); border:1px solid #ece3d5;
+  }
+  figure.big img{width:100%}            /* phóng ảnh nhỏ (S, C) đầy khung như D, I */
+  figcaption{color:var(--muted); font-size:.88rem; margin-top:8px}
+
+  /* ---- Bộ test tính cách ---- */
+  .btn{
+    background:linear-gradient(135deg,var(--d),var(--i)); color:#fff; border:none;
+    padding:13px 32px; border-radius:999px; font-size:1.02rem; font-weight:700;
+    cursor:pointer; box-shadow:0 4px 14px rgba(232,116,59,.35); transition:transform .15s;
+  }
+  .btn:hover{transform:translateY(-2px)}
+  .btn.ghost{background:#fff; color:var(--d); border:1.5px solid var(--d); box-shadow:none}
+  .q{background:#fbf7f0; border:1px solid #f1e9dc; border-radius:14px; padding:18px 20px; margin:16px 0}
+  .q .qt{font-weight:700; margin-bottom:10px}
+  .q .qt .num{color:var(--d); margin-right:6px}
+  .opt{
+    display:block; width:100%; text-align:left; background:#fff; border:1.5px solid #ece3d5;
+    border-radius:10px; padding:11px 15px; margin:8px 0; cursor:pointer; font-size:.97rem;
+    color:var(--ink); transition:.15s;
+  }
+  .opt:hover{border-color:#e8a23b}
+  .opt.sel{border-color:var(--d); background:#fff3e6; font-weight:600}
+  .progress-note{text-align:center; color:var(--muted); margin-top:14px; font-size:.92rem}
+  .result{margin-top:26px; padding:26px; border-radius:16px; background:#fff; border:1px solid #f0e8dc}
+  .result h3{margin-top:0}
+  .bar{display:flex; align-items:center; gap:12px; margin:10px 0}
+  .bar .lbl{width:150px; font-weight:700; flex:none; font-size:.92rem}
+  .bar .track{flex:1; background:#f1e9dc; border-radius:999px; height:22px; overflow:hidden}
+  .bar .fill{height:100%; border-radius:999px; width:0; transition:width .8s ease}
+  .bar .pct{width:46px; text-align:right; font-weight:700}
+  @media(max-width:520px){ .bar .lbl{width:96px; font-size:.8rem} }
+
+  .gallery{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:22px}
+  footer{text-align:center; color:var(--muted); padding:30px 20px 60px; font-size:.9rem}
+
+  @media(max-width:600px){
+    header h1{font-size:1.9rem}
+    .card-head{flex-direction:column; text-align:center}
+  }
+</style>
+</head>
+<body>
+
+<!-- KT Academy logo (cỏ 4 lá) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <linearGradient id="ktl-navy" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1c3e80"/><stop offset="1" stop-color="#0a1830"/></linearGradient>
+  <linearGradient id="ktl-gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe6a3"/><stop offset="1" stop-color="#e0a52e"/></linearGradient>
+  <linearGradient id="ktl-teal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7defdf"/><stop offset="1" stop-color="#1fc0af"/></linearGradient>
+  <radialGradient id="ktl-sheen" cx="0.42" cy="0.32" r="0.75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset="0.55" stop-color="#fff" stop-opacity="0"/></radialGradient>
+  <path id="ktl-leaf" d="M60 59 C 56 50 45 49 39 42 C 30 31 34 20 46 21 C 54 21.7 59 28 60 36 C 61 28 66 21.7 74 21 C 86 20 90 31 81 42 C 75 49 64 50 60 59 Z"/>
+  <symbol id="ktlogo" viewBox="0 0 120 120">
+    <rect x="6" y="6" width="108" height="108" rx="29" fill="url(#ktl-navy)"/>
+    <rect x="6" y="6" width="108" height="108" rx="29" fill="none" stroke="#f1c14a" stroke-opacity=".55" stroke-width="1.5"/>
+    <path d="M60 74 C 61.5 82 61 87 60 93" fill="none" stroke="#1bb9ac" stroke-width="5" stroke-linecap="round"/>
+    <g transform="translate(60 60) scale(1.15) translate(-60 -60)">
+      <g fill="url(#ktl-teal)" stroke="#14a99d" stroke-width="1" stroke-opacity=".4" stroke-linejoin="round">
+        <use href="#ktl-leaf" transform="rotate(45 60 60)"/><use href="#ktl-leaf" transform="rotate(135 60 60)"/><use href="#ktl-leaf" transform="rotate(225 60 60)"/><use href="#ktl-leaf" transform="rotate(315 60 60)"/></g>
+      <g fill="url(#ktl-sheen)"><use href="#ktl-leaf" transform="rotate(45 60 60)"/><use href="#ktl-leaf" transform="rotate(135 60 60)"/><use href="#ktl-leaf" transform="rotate(225 60 60)"/><use href="#ktl-leaf" transform="rotate(315 60 60)"/></g>
+    </g>
+    <circle cx="60" cy="60" r="22" fill="#0a1830"/>
+    <circle cx="60" cy="60" r="22" fill="none" stroke="url(#ktl-gold)" stroke-width="1.6" stroke-opacity=".8"/>
+    <text x="60" y="61" text-anchor="middle" dominant-baseline="central" font-family="'Segoe UI',Arial,sans-serif" font-weight="800" font-size="26" letter-spacing="-0.5" fill="url(#ktl-gold)">KT</text>
+  </symbol>
+</defs></svg>
+
+<header>
+  <a class="logo" href="#">
+    <svg class="kt-logo" viewBox="0 0 120 120" width="54" height="54" role="img" aria-label="KT Academy"><use href="#ktlogo"/></svg>
+    <span class="word"><span class="name"><b>KT</b> Academy</span><span class="sub">Kiến thức dẫn lối · Tư duy đổi mới</span></span>
+  </a>
+  <h1>Tổng hợp kiến thức <span class="d">D</span><span class="i">I</span><span class="s">S</span><span class="c">C</span></h1>
+  <p><strong>Hiểu mình — Hiểu người — Kết nối — Yêu thương</strong></p>
+  <p>Đọc vị hành vi để cảm thông, không phải để phán xét</p>
+</header>
+
+<nav>
+  <a class="no" href="#gioithieu">Giới thiệu</a>
+  <a class="no" href="#taisao">Vì sao học DISC</a>
+  <a class="nd" href="#d">D — Dominance</a>
+  <a class="ni" href="#i">I — Influence</a>
+  <a class="ns" href="#s">S — Steadiness</a>
+  <a class="nc" href="#c">C — Conscientiousness</a>
+  <a class="no" href="#cauhoi">Câu hỏi với DISC</a>
+  <a class="no" href="#docvi">4 câu hỏi đọc vị</a>
+  <a class="no" href="#giaotiep">Giao tiếp với DISC</a>
+  <a class="no" href="#phattrien">Vùng phát triển</a>
+  <a class="no" href="#hinhanh">Hình ảnh tổng hợp</a>
+  <a class="no" href="#test">🧭 Làm bài test</a>
+</nav>
+
+<div class="wrap">
+
+  <!-- GIỚI THIỆU -->
+  <section id="gioithieu">
+    <div class="intro">
+      <h2>DISC là gì?</h2>
+      <p>DISC là một <strong>công cụ phân tích tính cách</strong> được nhà tâm lý học
+      <strong>William Marston</strong> phát triển vào những năm <strong>1920</strong>. Tên gọi là viết tắt của
+      bốn nhóm hành vi chính. Marston cho rằng tính cách không chỉ do di truyền, mà còn được định hình
+      bởi <strong>môi trường và trải nghiệm cá nhân</strong> — tức mỗi người phản ứng với thế giới theo
+      một phong cách riêng, có thể quan sát và nhận diện được.</p>
+      <div class="grid">
+        <div class="item"><h4 style="color:var(--d)">D — Dominance (Thống lĩnh)</h4><p>Hành động · Mục tiêu · Quyết đoán</p></div>
+        <div class="item"><h4 style="color:var(--i)">I — Influence (Ảnh hưởng)</h4><p>Kết nối · Truyền cảm hứng · Lan tỏa</p></div>
+        <div class="item"><h4 style="color:var(--s)">S — Steadiness (Kiên định)</h4><p>Ổn định · Đồng hành · Bình yên</p></div>
+        <div class="item"><h4 style="color:var(--c)">C — Conscientiousness (Tuân thủ)</h4><p>Chính xác · Chất lượng · Chiều sâu</p></div>
+      </div>
+
+      <h3 style="margin-top:26px">Hai trục phân loại</h3>
+      <p>Bốn nhóm được sắp xếp dựa trên hai trục: <strong>ưu tiên</strong> (hướng về công việc hay con người)
+      và <strong>nhịp độ</strong> (nhanh hay chậm).</p>
+      <div class="grid">
+        <div class="item"><h4 style="color:var(--d)">D · nhanh — công việc</h4><p>Tư duy mục tiêu: “Làm thế nào để đạt được kết quả?”</p></div>
+        <div class="item"><h4 style="color:var(--i)">I · nhanh — con người</h4><p>Tư duy kết nối: “Làm thế nào để tạo sự cộng hưởng?”</p></div>
+        <div class="item"><h4 style="color:var(--s)">S · chậm — con người</h4><p>Tư duy đồng hành: “Làm thế nào để mọi người đều ổn?”</p></div>
+        <div class="item"><h4 style="color:var(--c)">C · chậm — công việc</h4><p>Tư duy phân tích: “Làm thế nào cho đúng quy trình?”</p></div>
+      </div>
+      <div class="tipbar"><b>Lưu ý:</b> Đây là các đặc điểm <em>nổi trội</em>, không cứng nhắc. Trong mỗi con người
+      luôn có đủ cả bốn yếu tố DISC — tùy hoàn cảnh, độ tuổi, năng lực và trải nghiệm mà một nhóm nổi lên rõ hơn.
+      Không có nhóm nào tốt hơn nhóm nào; mỗi nhóm có nét riêng, món quà riêng và bài học trưởng thành riêng.</div>
+
+      <div class="quote">“DISC = Tấm bản đồ — không phải để đặt người vào ô, mà để hiểu họ rõ hơn và sống nhân ái hơn.”</div>
+      <figure class="big">
+        <img src="DISC.png" alt="DISC - Hiểu mình, hiểu người">
+        <figcaption>DISC — Hiểu mình, Hiểu người, Kết nối, Yêu thương</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- VI SAO HOC DISC -->
+  <section id="taisao">
+    <div class="intro">
+      <h2>Vì sao nên học DISC?</h2>
+      <p>Bản chất mỗi người có một tính cách, một lăng kính, một hệ giá trị riêng. Nhiều xung đột xảy ra
+      không phải vì ai đúng ai sai, mà vì <strong>chúng ta chưa thật sự hiểu nhau</strong> và chưa biết cách
+      truyền tải thông điệp theo cách phù hợp. DISC giúp ta tiếp cận khéo léo hơn, truyền tải tốt hơn và
+      kết nối sâu hơn — <em>không phải để thao túng</em>.</p>
+      <div class="grid">
+        <div class="item"><h4><span class="ic">🪞</span> Hiểu chính mình</h4><p>Biết xu hướng tự nhiên, điểm mạnh, điểm yếu và cách mình phản ứng trong từng tình huống — để tự điều chỉnh.</p></div>
+        <div class="item"><h4><span class="ic">💞</span> Hôn nhân</h4><p>Hai người đến với nhau vì sự khác biệt; sau hôn nhân, chính khác biệt đó dễ thành căng thẳng nếu không thấu hiểu.</p></div>
+        <div class="item"><h4><span class="ic">🧒</span> Con cái</h4><p>“Cha mẹ sinh con, trời sinh tính.” Hiểu hành vi của con để dẫn dắt và đồng hành phù hợp, không vô tình gây tổn thương.</p></div>
+        <div class="item"><h4><span class="ic">💼</span> Công việc</h4><p>Không hiểu phong cách của nhau dẫn đến hiểu lầm, xung đột không đáng có và lãng phí tiềm năng tập thể.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- D -->
+  <section id="d">
+    <div class="card d">
+      <div class="card-head">
+        <div class="badge">D</div>
+        <div><h2>Dominance — Người dẫn dắt</h2><p class="tag">Dẫn dắt · Tiên phong · Tạo kết quả</p></div>
+      </div>
+      <div class="card-body">
+        <div class="grid">
+          <div class="item"><h4><span class="ic">🎯</span> Điều họ quan tâm</h4><p>Mục tiêu, kết quả, hiệu quả.</p></div>
+          <div class="item"><h4><span class="ic">🏆</span> Động lực</h4><p>Thành tựu – chiến thắng – chinh phục.</p></div>
+          <div class="item strong"><h4><span class="ic">💪</span> Điểm mạnh</h4><p>Quyết đoán, hành động nhanh, dám chịu trách nhiệm.</p></div>
+          <div class="item weak"><h4><span class="ic">⚠️</span> Điểm yếu</h4><p>Nóng vội, thiếu kiên nhẫn, dễ tạo áp lực.</p></div>
+          <div class="item blind"><h4><span class="ic">🙈</span> Điểm mù</h4><p>Mình nghĩ: “Tôi đang giúp người khác phát triển.” — Người khác thấy: “Tôi đang bị thúc ép.”</p></div>
+          <div class="item"><h4><span class="ic">🌱</span> Bài học trưởng thành</h4><p>Lắng nghe hơn, kiên nhẫn hơn, tôn trọng tốc độ của người khác.</p></div>
+          <div class="item"><h4><span class="ic">🎁</span> Món quà</h4><p>Sức mạnh của hành động.</p></div>
+          <div class="item"><h4><span class="ic">❓</span> Câu hỏi đặc trưng</h4><p>“Bao giờ xong? Kết quả là gì? Ai chịu trách nhiệm?”</p></div>
+          <div class="item"><h4><span class="ic">⚡</span> Dưới áp lực &amp; điều ghét</h4><p>Muốn kiểm soát. Ghét sự chậm chạp và thiếu trách nhiệm.</p></div>
+        </div>
+        <div class="tipbar"><b>Khi nói chuyện với người nhóm D:</b> đi thẳng vào vấn đề, nói ngắn gọn, có giải pháp và kết luận. Đừng vòng vo, kể lể hay thiếu trọng tâm.</div>
+        <figure>
+          <img src="D.jpg" alt="Yếu tố D trong DISC">
+          <figcaption>Yếu tố D — Hành động · Mục tiêu · Quyết đoán</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- I -->
+  <section id="i">
+    <div class="card i">
+      <div class="card-head">
+        <div class="badge">I</div>
+        <div><h2>Influence — Người truyền cảm hứng</h2><p class="tag">Kết nối · Lan tỏa · Truyền cảm hứng</p></div>
+      </div>
+      <div class="card-body">
+        <div class="grid">
+          <div class="item"><h4><span class="ic">🫂</span> Điều họ quan tâm</h4><p>Con người, niềm vui, kết nối.</p></div>
+          <div class="item"><h4><span class="ic">📣</span> Động lực</h4><p>Ghi nhận – kết nối – truyền cảm hứng.</p></div>
+          <div class="item strong"><h4><span class="ic">💬</span> Điểm mạnh</h4><p>Giao tiếp tốt, sáng tạo, nhiệt tình.</p></div>
+          <div class="item weak"><h4><span class="ic">⚠️</span> Điểm yếu</h4><p>Dễ mất tập trung, thiếu kỷ luật, hứng lên mới làm.</p></div>
+          <div class="item blind"><h4><span class="ic">🙈</span> Điểm mù</h4><p>Mình nghĩ: “Tôi đang tạo ra nhiều năng lượng.” — Người khác thấy: “Bạn đang nói quá nhiều.”</p></div>
+          <div class="item"><h4><span class="ic">🌱</span> Bài học trưởng thành</h4><p>Đi sâu hơn, hoàn thành trọn vẹn, kỷ luật với bản thân.</p></div>
+          <div class="item"><h4><span class="ic">🎁</span> Món quà</h4><p>Sức mạnh của sự kết nối.</p></div>
+          <div class="item"><h4><span class="ic">❓</span> Câu hỏi đặc trưng</h4><p>“Có ai tham gia không? Mọi người có hứng thú không? Mọi người thấy sao?”</p></div>
+          <div class="item"><h4><span class="ic">⚡</span> Dưới áp lực &amp; điều ghét</h4><p>Tìm người chia sẻ. Ghét sự lạnh lùng và thiếu tương tác.</p></div>
+        </div>
+        <div class="tipbar"><b>Khi nói chuyện với người nhóm I:</b> cởi mở, tích cực, nhiệt tình, cho họ cơ hội chia sẻ. Đừng quá lạnh lùng, đừng nói toàn dữ liệu hay quá cứng nhắc.</div>
+        <figure>
+          <img src="I.jpg" alt="Yếu tố I trong DISC">
+          <figcaption>Yếu tố I — Kết nối · Truyền cảm hứng · Ảnh hưởng</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- S -->
+  <section id="s">
+    <div class="card s">
+      <div class="card-head">
+        <div class="badge">S</div>
+        <div><h2>Steadiness — Người đồng hành đáng tin cậy</h2><p class="tag">Ổn định · Đồng hành · Bình yên · (Màu Tím Lavender)</p></div>
+      </div>
+      <div class="card-body">
+        <p style="margin-top:0;color:var(--muted)">Người hướng đến sự ổn định, hòa hợp và các mối quan hệ lâu dài.</p>
+        <div class="grid">
+          <div class="item strong"><h4><span class="ic">💪</span> Điểm mạnh</h4><p>Lắng nghe sâu sắc, đồng hành tận tâm, kiên trì bền bỉ, đáng tin cậy.</p></div>
+          <div class="item weak"><h4><span class="ic">⚠️</span> Điểm yếu</h4><p>Ngại thay đổi, ngại va chạm, khó từ chối.</p></div>
+          <div class="item blind"><h4><span class="ic">🙈</span> Điểm mù</h4><p>Mình nghĩ: “Tôi đang giữ hòa khí.” — Người khác thấy: “Bạn đang né tránh mình rồi.”</p></div>
+          <div class="item"><h4><span class="ic">🌱</span> Bài học trưởng thành</h4><p>Thiết lập ranh giới, dám nói điều mình nghĩ.</p></div>
+          <div class="item"><h4><span class="ic">🎁</span> Món quà</h4><p>Giúp người khác cảm thấy được thấu hiểu; tạo sự gắn kết và cảm giác an toàn.</p></div>
+          <div class="item"><h4><span class="ic">❓</span> Câu hỏi đặc trưng</h4><p>“Điều này có ảnh hưởng tới mọi người không? Có ổn định không? Có ai cần giúp gì không?”</p></div>
+          <div class="item"><h4><span class="ic">⚡</span> Dưới áp lực &amp; điều ghét</h4><p>Im lặng chịu đựng. Ghét xung đột và bị thúc ép.</p></div>
+          <div class="item"><h4><span class="ic">🤝</span> Khi đồng hành với S</h4><p>Nhẹ nhàng, lắng nghe, kiên nhẫn, tạo cảm giác an toàn. Đừng thúc ép, đừng chỉ trích trước đám đông.</p></div>
+        </div>
+        <div class="tipbar"><b>S tạo ra sự gắn kết.</b> Niềm tin và sự an toàn là chìa khóa để đồng hành cùng người nhóm S.</div>
+        <figure class="big">
+          <img src="S.png" alt="Yếu tố S trong DISC">
+          <figcaption>Yếu tố S — Ổn định · Đồng hành · Bình yên</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- C -->
+  <section id="c">
+    <div class="card c">
+      <div class="card-head">
+        <div class="badge">C</div>
+        <div><h2>Conscientiousness — Người bảo vệ chất lượng</h2><p class="tag">Chính xác · Chất lượng · Chiều sâu · (Màu Vàng Gold)</p></div>
+      </div>
+      <div class="card-body">
+        <p style="margin-top:0;color:var(--muted)">Người hướng đến chất lượng, quy trình và độ chính xác.</p>
+        <div class="grid">
+          <div class="item strong"><h4><span class="ic">💪</span> Điểm mạnh</h4><p>Logic, phân tích sâu, tỉ mỉ, tiêu chuẩn cao.</p></div>
+          <div class="item weak"><h4><span class="ic">⚠️</span> Điểm yếu</h4><p>Cầu toàn, chậm hành động, tiêu chuẩn quá cao.</p></div>
+          <div class="item blind"><h4><span class="ic">🙈</span> Điểm mù</h4><p>Mình nghĩ: “Tôi đang cẩn thận và bảo vệ chất lượng.” — Người khác thấy: “Bạn quá khó tính, khắt khe.”</p></div>
+          <div class="item"><h4><span class="ic">🌱</span> Bài học trưởng thành</h4><p>Hành động sớm hơn, chấp nhận sai số ban đầu, tin tưởng người khác.</p></div>
+          <div class="item"><h4><span class="ic">🎁</span> Món quà</h4><p>Quyết định dựa trên dữ liệu; bảo vệ chất lượng và tạo nền tảng vững chắc.</p></div>
+          <div class="item"><h4><span class="ic">❓</span> Câu hỏi đặc trưng</h4><p>“Đã kiểm tra chưa? Bạn có bằng chứng gì không? Có dữ liệu để chứng minh không?”</p></div>
+          <div class="item"><h4><span class="ic">⚡</span> Dưới áp lực &amp; điều ghét</h4><p>Phân tích nhiều hơn. Ghét sự cẩu thả và thiếu logic.</p></div>
+          <div class="item"><h4><span class="ic">📋</span> Làm việc với C</h4><p>Có lý lẽ, có quy trình, có căn cứ rõ ràng, chuẩn bị kỹ. Tránh mập mờ, thiếu thông tin, nói toàn cảm xúc.</p></div>
+        </div>
+        <div class="tipbar"><b>C tạo ra chất lượng.</b> Khi S và C phối hợp, tổ chức có được cả trái tim lẫn tiêu chuẩn.</div>
+        <figure class="big">
+          <img src="C.png" alt="Yếu tố C trong DISC">
+          <figcaption>Yếu tố C — Chính xác · Chất lượng · Chiều sâu</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAU HOI VOI DISC -->
+  <section id="cauhoi">
+    <div class="intro">
+      <h2>Câu hỏi đầu tiên — tấm gương phản chiếu sự ưu tiên</h2>
+      <p>Cùng nhận một nhiệm vụ, nhưng mỗi người lại phản ứng rất khác nhau. Có người hỏi
+      <em>“Bao giờ xong?”</em>, người khác hỏi <em>“Có ai tham gia không?”</em>, người nữa hỏi
+      <em>“Mọi người có ổn không?”</em>, và cũng có người hỏi <em>“Đã kiểm tra kỹ chưa?”</em>.
+      Không ai cố tình khác biệt — <strong>bộ não mỗi người chỉ đang tự động hướng sự chú ý vào điều
+      họ cho là quan trọng nhất.</strong> DISC giúp ta gọi tên những xu hướng ưu tiên ấy.</p>
+
+      <div class="grid">
+        <div class="item"><h4 style="color:var(--d)">D · hướng đến kết quả</h4><p>“Bao giờ xong? Kết quả là gì? Ai chịu trách nhiệm?” — nhìn thấy mục tiêu, cơ hội và thách thức.</p></div>
+        <div class="item"><h4 style="color:var(--i)">I · hướng đến con người</h4><p>“Có ai tham gia không? Có thú vị không? Mọi người cảm thấy thế nào?” — nhìn thấy sự kết nối.</p></div>
+        <div class="item"><h4 style="color:var(--s)">S · hướng đến an toàn</h4><p>“Mọi người có ổn không? Ai sẽ tham gia? Điều này có đủ an toàn không?” — nhìn thấy sự ổn định.</p></div>
+        <div class="item"><h4 style="color:var(--c)">C · hướng đến tính đúng đắn</h4><p>“Đã kiểm tra chưa? Có bằng chứng không? Dữ liệu ở đâu?” — nhìn thấy chất lượng và độ chính xác.</p></div>
+      </div>
+
+      <h3 style="margin-top:26px">Nghề nghiệp thường phù hợp</h3>
+      <p>Nhiều người chọn nghề vì mình có năng lực làm được. Nhưng sự gắn bó lâu dài lại thường đến từ việc
+      nghề đó có <strong>phù hợp với xu hướng hành vi tự nhiên</strong> của mình hay không.</p>
+      <div class="grid">
+        <div class="item"><h4 style="color:var(--d)">D</h4><p>Lãnh đạo, quản lý, kinh doanh, khởi nghiệp, đàm phán, điều hành dự án.</p></div>
+        <div class="item"><h4 style="color:var(--i)">I</h4><p>Đào tạo, marketing, bán hàng, truyền thông, sự kiện, giáo dục, chăm sóc khách hàng.</p></div>
+        <div class="item"><h4 style="color:var(--s)">S</h4><p>Nhân sự, giáo viên, điều dưỡng, tư vấn, công tác xã hội, chăm sóc sức khỏe.</p></div>
+        <div class="item"><h4 style="color:var(--c)">C</h4><p>Kế toán, tài chính, kỹ thuật, nghiên cứu, pháp lý, kiểm soát chất lượng, dữ liệu, y dược.</p></div>
+      </div>
+
+      <div class="gallery" style="margin-top:24px; grid-template-columns:repeat(2,1fr)">
+        <figure><img src="C%C3%A2u%20h%E1%BB%8Fi%20v%E1%BB%9Bi%20D.jpg" alt="Câu hỏi đặc trưng của nhóm D"><figcaption>D — “Bao giờ xong?” · hướng đến kết quả</figcaption></figure>
+        <figure><img src="C%C3%A2u%20h%E1%BB%8Fi%20v%E1%BB%9Bi%20I.jpg" alt="Câu hỏi đặc trưng của nhóm I"><figcaption>I — “Có ai tham gia không?” · hướng đến con người</figcaption></figure>
+        <figure><img src="C%C3%A2u%20h%E1%BB%8Fi%20v%E1%BB%9Bi%20S.jpg" alt="Câu hỏi đặc trưng của nhóm S"><figcaption>S — “Mọi người có ổn không?” · hướng đến an toàn</figcaption></figure>
+        <figure><img src="C%C3%A2u%20h%E1%BB%8Fi%20v%E1%BB%9Bi%20C.jpg" alt="Câu hỏi đặc trưng của nhóm C"><figcaption>C — “Đã kiểm tra kỹ chưa?” · hướng đến chất lượng</figcaption></figure>
+      </div>
+
+      <div class="tipbar"><b>Đừng vội dán nhãn:</b> Người D không vô tâm — họ tập trung vào kết quả. Người I không thiếu nghiêm túc — họ tập trung vào kết nối. Người S không yếu đuối — họ bảo vệ sự an toàn. Người C không khó tính — họ bảo vệ chất lượng. Hiểu DISC để biết mình đang nhìn thế giới qua lăng kính nào, chứ không phải để đóng khung ai.</div>
+    </div>
+  </section>
+
+  <!-- 4 CAU HOI DOC VI -->
+  <section id="docvi">
+    <div class="intro">
+      <h2>4 câu hỏi để đọc vị người khác</h2>
+      <p>Khi gặp một người và muốn quan sát xem họ nghiêng về nhóm nào, có thể bắt đầu bằng bốn câu hỏi:</p>
+      <div class="grid">
+        <div class="item"><h4>1 · Họ quan tâm nhất điều gì?</h4><p>Nói nhiều về kết quả, cách làm, trách nhiệm → <b>D</b> hoặc <b>C</b>. Quan tâm con người, cảm xúc, ai tham gia → <b>I</b> hoặc <b>S</b>.</p></div>
+        <div class="item"><h4>2 · Ra quyết định nhanh hay chậm?</h4><p>Nhanh → <b>D</b> hoặc <b>I</b>. Chậm → <b>S</b> hoặc <b>C</b>.</p></div>
+        <div class="item"><h4>3 · Khi gặp áp lực, họ phản ứng sao?</h4><p><b>D</b> muốn kiểm soát · <b>I</b> tìm người chia sẻ · <b>S</b> im lặng chịu đựng · <b>C</b> phân tích nhiều hơn.</p></div>
+        <div class="item"><h4>4 · Điều gì làm họ khó chịu nhất?</h4><p><b>D</b> ghét chậm chạp, thiếu trách nhiệm · <b>I</b> ghét lạnh lùng, thiếu tương tác · <b>S</b> ghét xung đột, bị thúc ép · <b>C</b> ghét cẩu thả, thiếu logic.</p></div>
+      </div>
+      <div class="tipbar"><b>Đừng đánh giá qua một hành vi đơn lẻ.</b> Hãy nhìn vào <b>chuỗi hành vi lặp lại</b>. Với người thân quen, DISC giúp hiểu sâu sắc; với người mới gặp, DISC chỉ là gợi ý ban đầu — không phải toàn bộ sự thật về họ.</div>
+      <figure>
+        <img src="DISC%20TONG%20HOP.jpg" alt="Đọc vị hành vi với DISC">
+        <figcaption>Đọc vị hành vi với DISC — sơ đồ tổng hợp</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- GIAO TIEP VOI DISC -->
+  <section id="giaotiep">
+    <div class="intro">
+      <h2>Giao tiếp với DISC — học cách đồng hành</h2>
+      <p>Nhiều mâu thuẫn không đến từ việc ai đúng ai sai, mà từ việc hai người đang nói bằng hai
+      <strong>“ngôn ngữ hành vi”</strong> khác nhau. Một người cần kết quả, người kia cần cảm giác an toàn;
+      một người muốn nói thẳng, người kia cần được lắng nghe trước; một người muốn số liệu rõ ràng,
+      người kia lại cần được truyền cảm hứng. DISC không dùng để phán xét hay điều khiển —
+      mà để hiểu người trước mặt đang quan tâm điều gì và <em>nên giao tiếp thế nào để cả hai bớt va vào nhau.</em></p>
+
+      <div class="grid">
+        <div class="item"><h4 style="color:var(--d)">🎯 Giao tiếp với D</h4><p>Đi thẳng vào trọng tâm: ngắn gọn, rõ mục tiêu, rõ kết quả, rõ việc cần làm. Đừng mở đầu bằng quá nhiều vòng cảm xúc khi vấn đề cần quyết nhanh.</p></div>
+        <div class="item"><h4 style="color:var(--i)">🫂 Giao tiếp với I</h4><p>Tạo không khí thân thiện, ghi nhận đóng góp, cho họ không gian chia sẻ — nhưng nhớ kéo họ về mục tiêu, thứ tự ưu tiên và cam kết hành động cụ thể.</p></div>
+        <div class="item"><h4 style="color:var(--s)">🤝 Giao tiếp với S</h4><p>Nhẹ nhàng, kiên nhẫn, tạo cảm giác an toàn. Đừng ép họ thay đổi quá nhanh; hãy cho họ biết lý do, lộ trình và rằng cảm xúc của họ được tôn trọng.</p></div>
+        <div class="item"><h4 style="color:var(--c)">📋 Giao tiếp với C</h4><p>Chuẩn bị thông tin rõ ràng: dữ liệu, quy trình, tiêu chí, phương án và lý do. Đừng nói chung chung — cho họ đủ cơ sở để tin, thay vì bắt tin bằng cảm giác.</p></div>
+      </div>
+
+      <div class="tipbar"><b>Đọc vị đúng là đọc để thấu hiểu.</b> Đọc để biết khi nào nên nói thẳng, khi nào nên chậm lại; ai cần kết quả, ai cần cảm xúc, ai cần an toàn, ai cần dữ liệu — để bớt trách một người chỉ vì họ không vận hành giống mình.</div>
+
+      <figure>
+        <img src="Giao%20ti%E1%BA%BFp%20v%E1%BB%9Bi%20DISC%201.jpg" alt="Đọc vị người khác theo DISC">
+        <figcaption>Đọc vị người khác theo DISC — hiểu hành vi · hiểu nhu cầu · hiểu cách giao tiếp</figcaption>
+      </figure>
+
+      <h3 style="margin-top:30px">Ứng dụng DISC trong đời sống</h3>
+      <p>Hiểu bốn nhóm này giúp ta nhìn các mối quan hệ bằng một lăng kính mềm hơn — trong tình yêu,
+      nuôi dạy con, lãnh đạo và cả bán hàng.</p>
+      <div class="grid">
+        <div class="item"><h4><span class="ic">💞</span> Tình yêu &amp; Hôn nhân</h4><p>Chồng thiên D yêu bằng cách giải quyết vấn đề thật nhanh; vợ thiên S lại cần được lắng nghe trước khi nghe giải pháp. Người I cần lãng mạn, trò chuyện; người C thể hiện tình yêu bằng trách nhiệm và sự ổn định. Hiểu DISC để tình yêu bớt “oan ức”.</p></div>
+        <div class="item"><h4><span class="ic">🧒</span> Nuôi dạy con</h4><p>Bé D cần được trao lựa chọn và trách nhiệm thay vì bị ra lệnh. Bé I cần được ghi nhận và học theo đến cùng. Bé S cần ổn định, trấn an, thời gian thích nghi. Bé C cần cấu trúc rõ ràng và hiểu rằng sai sót không làm mất giá trị.</p></div>
+        <div class="item"><h4><span class="ic">🧭</span> Lãnh đạo &amp; Làm việc nhóm</h4><p>Với D: giao mục tiêu rõ, trao quyền, cho thử thách. Với I: tạo không gian kết nối, ghi nhận, cho trình bày ý tưởng. Với S: đồng hành, tạo an toàn, giải thích thay đổi. Với C: tiêu chuẩn rõ, dữ liệu đầy đủ, quy trình cụ thể.</p></div>
+        <div class="item"><h4><span class="ic">🛒</span> Bán hàng &amp; Tư vấn</h4><p>Khách D quan tâm kết quả &amp; hiệu quả. Khách I bị thu hút bởi trải nghiệm &amp; cảm xúc. Khách S cần niềm tin, sự an toàn, không bị ép mua. Khách C cần thông số, bằng chứng, lý do logic. Nói đúng ngôn ngữ của người nghe.</p></div>
+      </div>
+
+      <figure>
+        <img src="%E1%BB%A8ng%20d%E1%BB%A5ng%20DISC%20trong%20%C4%91%E1%BB%9Di%20s%E1%BB%91ng.jpg" alt="Ứng dụng DISC trong đời sống">
+        <figcaption>Ứng dụng DISC trong đời sống — hiểu người đúng hơn, giao tiếp hợp hơn, đồng hành hiệu quả hơn</figcaption>
+      </figure>
+
+      <div class="quote">“Sự trưởng thành trong các mối quan hệ bắt đầu từ một điều rất nhỏ: thôi dùng bản thân làm thước đo duy nhất cho người khác. Đôi khi, họ chỉ đang sống bằng một nhịp khác.”</div>
+    </div>
+  </section>
+
+  <!-- VUNG PHAT TRIEN -->
+  <section id="phattrien">
+    <div class="intro">
+      <h2>Vùng thoải mái &amp; Vùng phát triển</h2>
+      <p>Ai cũng thích <strong>vùng thoải mái</strong> — nơi ta suy nghĩ và hành động tự nhiên, tốn ít năng lượng.
+      Nhưng để trưởng thành, ta cần bước vào <strong>vùng phát triển</strong>. Điều thú vị: ta không cần học quá xa,
+      chỉ cần học từ người có tính cách <strong>đối lập</strong> — nguồn bổ sung lý tưởng cho phần mình còn thiếu.</p>
+      <div class="grid">
+        <div class="item"><h4 style="color:var(--d)">D học từ S</h4><p>Lắng nghe, kiên nhẫn và đồng cảm.</p></div>
+        <div class="item"><h4 style="color:var(--i)">I học từ C</h4><p>Kỷ luật, chiều sâu và tư duy hệ thống.</p></div>
+        <div class="item"><h4 style="color:var(--s)">S học từ D</h4><p>Quyết đoán, thiết lập ranh giới, dám nói “Không”.</p></div>
+        <div class="item"><h4 style="color:var(--c)">C học từ I</h4><p>Linh hoạt, kết nối, dám hành động trước khi mọi thứ hoàn hảo.</p></div>
+      </div>
+      <div class="quote">“Khi ta thôi cố thay đổi người khác và bắt đầu thay đổi cách mình tiếp cận họ, mối quan hệ — dù trong gia đình hay công việc — sẽ trở nên nhẹ nhàng hơn, sâu sắc hơn và bền vững hơn.”</div>
+      <p style="margin-bottom:0">Hãy dùng DISC như một công cụ đắc lực, nhưng đừng biến nó thành chiếc nhãn để đóng khung bất kỳ ai.
+      Một em bé nhóm I hồn nhiên có thể lớn lên mang nét D tiêu cực nếu môi trường nuôi dưỡng theo hướng đó;
+      một người rất D, C trong công việc có thể lại mềm mại, cần bình yên (I, S) khi về với đời sống cá nhân.
+      <strong>Thấu hiểu bản thân và người khác là một hành trình.</strong></p>
+    </div>
+  </section>
+
+  <!-- HINH ANH -->
+  <section id="hinhanh">
+    <div class="intro">
+      <h2>Hình ảnh tổng hợp</h2>
+      <p>Các sơ đồ chi tiết để xem nhanh và ghi nhớ:</p>
+      <div class="gallery">
+        <figure><img src="%C4%90%E1%BB%8Dc%20v%E1%BB%8B%20DI.jpg" alt="Đọc vị D và I"><figcaption>Đọc vị hành vi: D &amp; I</figcaption></figure>
+        <figure><img src="%C4%90%E1%BB%8Dc%20v%E1%BB%8B%20SC.jpg" alt="Đọc vị S và C"><figcaption>Đọc vị hành vi: S &amp; C</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- BO TEST TINH CACH -->
+  <section id="test">
+    <div class="intro">
+      <h2>🧭 Bộ test tính cách DISC</h2>
+      <p>Với mỗi câu, hãy chọn phương án <strong>giống bạn nhất</strong>. Cuối bài sẽ hiện biểu đồ xu hướng
+      <b>D · I · S · C</b> của bạn, cùng gợi ý nhóm nổi trội. Đây là công cụ tự khám phá — kết quả chỉ mang
+      tính tham khảo, không phải để đóng khung bạn.</p>
+      <div id="quiz"></div>
+      <div style="text-align:center; margin-top:20px">
+        <button id="seeResult" class="btn">Xem kết quả</button>
+        <button id="resetQuiz" class="btn ghost" style="margin-left:8px" hidden>Làm lại</button>
+        <div class="progress-note" id="progressNote"></div>
+      </div>
+      <div id="result" class="result" hidden></div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <a class="logo" href="#">
+    <svg class="kt-logo" viewBox="0 0 120 120" width="42" height="42" role="img" aria-label="KT Academy"><use href="#ktlogo"/></svg>
+    <span class="word"><span class="name"><b>KT</b> Academy</span><span class="sub">Kiến thức dẫn lối · Tư duy đổi mới</span></span>
+  </a>
+  <p>Tổng hợp kiến thức DISC · Hiểu mình – Hiểu người – Kết nối yêu thương 💛</p>
+  <p>© KT Academy</p>
+</footer>
+
+<script>
+(function(){
+  var QUESTIONS = [
+    {q:"Khi bắt đầu một việc mới, bạn quan tâm nhất điều gì?", o:{
+      d:"Mục tiêu và kết quả cần đạt", i:"Cùng làm với ai, không khí ra sao",
+      s:"Mọi thứ có ổn định, rõ ràng và an toàn không", c:"Quy trình, tiêu chuẩn và độ chính xác"}},
+    {q:"Bạn thường ra quyết định như thế nào?", o:{
+      d:"Rất nhanh, tin vào hành động", i:"Nhanh, theo cảm hứng và cảm nhận về con người",
+      s:"Chậm rãi, cân nhắc ảnh hưởng tới mọi người", c:"Chậm, sau khi phân tích kỹ dữ liệu"}},
+    {q:"Dưới áp lực, bạn có xu hướng…", o:{
+      d:"Muốn kiểm soát và đẩy nhanh mọi thứ", i:"Tìm người để chia sẻ, nói ra",
+      s:"Im lặng chịu đựng, giữ hòa khí", c:"Rút lui để phân tích, tìm nguyên nhân"}},
+    {q:"Điều gì khiến bạn khó chịu nhất?", o:{
+      d:"Sự chậm chạp và thiếu trách nhiệm", i:"Sự lạnh lùng và thiếu tương tác",
+      s:"Xung đột và bị thúc ép", c:"Sự cẩu thả và thiếu logic"}},
+    {q:"Người khác thường nhận xét bạn là người…", o:{
+      d:"Quyết đoán, mạnh mẽ, thẳng thắn", i:"Vui vẻ, nhiệt tình, truyền cảm hứng",
+      s:"Điềm đạm, đáng tin, biết lắng nghe", c:"Cẩn thận, tỉ mỉ, có nguyên tắc"}},
+    {q:"Trong một cuộc họp, bạn thường…", o:{
+      d:"Hướng mọi người tới kết luận và hành động", i:"Khuấy động không khí, kết nối mọi người",
+      s:"Lắng nghe, hỗ trợ, giữ sự hài hòa", c:"Đặt câu hỏi về dữ liệu và chi tiết"}},
+    {q:"Điểm yếu bạn dễ mắc phải nhất?", o:{
+      d:"Nóng vội, thiếu kiên nhẫn, tạo áp lực", i:"Mất tập trung, thiếu kỷ luật, nói nhiều",
+      s:"Ngại thay đổi, ngại va chạm, khó từ chối", c:"Cầu toàn, chậm hành động, lo lắng quá mức"}},
+    {q:"Động lực lớn nhất của bạn là…", o:{
+      d:"Thành tựu, chiến thắng, chinh phục", i:"Được ghi nhận, kết nối, lan tỏa",
+      s:"Sự tin cậy, gắn kết, bình yên", c:"Sự đúng đắn, chất lượng, tiêu chuẩn cao"}},
+    {q:"Bạn tiếp cận một vấn đề mới ra sao?", o:{
+      d:"Làm ngay, điều chỉnh sau", i:"Bàn với mọi người cho vui và nảy ý tưởng",
+      s:"Từ từ, chắc chắn, không vội", c:"Nghiên cứu kỹ trước khi bắt tay"}},
+    {q:"Trong các mối quan hệ, bạn coi trọng…", o:{
+      d:"Sự tôn trọng và hiệu quả", i:"Niềm vui và sự kết nối",
+      s:"Sự ổn định và lòng trung thành", c:"Sự rõ ràng và đáng tin cậy"}},
+    {q:"Bạn thích người khác giao tiếp với mình kiểu…", o:{
+      d:"Đi thẳng vào vấn đề, ngắn gọn", i:"Cởi mở, nhiệt tình, thân thiện",
+      s:"Nhẹ nhàng, kiên nhẫn, chân thành", c:"Rõ ràng, có căn cứ, logic"}},
+    {q:"Khi nhóm gặp khó khăn, bạn là người…", o:{
+      d:"Đứng ra dẫn dắt và quyết định", i:"Động viên, giữ tinh thần mọi người",
+      s:"Âm thầm hỗ trợ, giữ đoàn kết", c:"Phân tích vấn đề, tìm giải pháp đúng"}},
+    {q:"Bạn tự hào nhất khi…", o:{
+      d:"Đạt được một mục tiêu lớn", i:"Được mọi người yêu mến, truyền cảm hứng",
+      s:"Giúp người khác cảm thấy được thấu hiểu", c:"Hoàn thành công việc chuẩn chỉnh, chất lượng"}},
+    {q:"Không gian làm việc lý tưởng của bạn là…", o:{
+      d:"Tự do hành động, có quyền quyết định", i:"Năng động, nhiều tương tác",
+      s:"Ổn định, hài hòa, ít biến động", c:"Ngăn nắp, có quy trình rõ ràng"}}
+  ];
+
+  var META = {
+    d:{name:"D — Dominance", tag:"Hành động · Mục tiêu · Quyết đoán", color:"#e8743b", link:"#d"},
+    i:{name:"I — Influence", tag:"Kết nối · Truyền cảm hứng · Lan tỏa", color:"#f3b730", link:"#i"},
+    s:{name:"S — Steadiness", tag:"Ổn định · Đồng hành · Bình yên", color:"#9b7ed0", link:"#s"},
+    c:{name:"C — Conscientiousness", tag:"Chính xác · Chất lượng · Chiều sâu", color:"#3b7fd6", link:"#c"}
+  };
+
+  var answers = {};
+
+  // Xáo trộn thứ tự đáp án để tránh thiên vị vị trí
+  function shuffled(arr){
+    var a = arr.slice();
+    for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; }
+    return a;
+  }
+
+  var quiz = document.getElementById('quiz');
+  var note = document.getElementById('progressNote');
+
+  function render(){
+    quiz.innerHTML = '';
+    QUESTIONS.forEach(function(item, qi){
+      var card = document.createElement('div'); card.className='q';
+      var title = document.createElement('div'); title.className='qt';
+      title.innerHTML = '<span class="num">'+(qi+1)+'.</span>'+item.q;
+      card.appendChild(title);
+      var letters = shuffled(['d','i','s','c']);
+      letters.forEach(function(L){
+        var btn = document.createElement('button');
+        btn.className='opt'; btn.type='button'; btn.textContent=item.o[L];
+        btn.setAttribute('data-q', qi); btn.setAttribute('data-l', L);
+        btn.addEventListener('click', function(){
+          answers[qi]=L;
+          Array.prototype.forEach.call(card.querySelectorAll('.opt'), function(b){ b.classList.remove('sel'); });
+          btn.classList.add('sel');
+          updateNote();
+        });
+        card.appendChild(btn);
+      });
+      quiz.appendChild(card);
+    });
+    updateNote();
+  }
+
+  function updateNote(){
+    var done = Object.keys(answers).length;
+    note.textContent = 'Đã trả lời ' + done + ' / ' + QUESTIONS.length + ' câu';
+  }
+
+  function showResult(){
+    var done = Object.keys(answers).length;
+    var res = document.getElementById('result');
+    if(done < QUESTIONS.length){
+      res.hidden = false;
+      res.innerHTML = '<p style="margin:0;color:#c0392b"><b>Bạn còn '+(QUESTIONS.length-done)+
+        ' câu chưa trả lời.</b> Hãy hoàn thành tất cả các câu để có kết quả chính xác nhé!</p>';
+      res.scrollIntoView({behavior:'smooth'});
+      return;
+    }
+    var score = {d:0,i:0,s:0,c:0};
+    Object.keys(answers).forEach(function(k){ score[answers[k]]++; });
+    var total = QUESTIONS.length;
+    var order = ['d','i','s','c'].sort(function(a,b){ return score[b]-score[a]; });
+    var top = order[0];
+    var topTies = order.filter(function(L){ return score[L]===score[top]; });
+
+    var html = '<h3>Kết quả của bạn</h3>';
+    if(topTies.length>1){
+      html += '<p>Bạn có sự cân bằng giữa <b>'+topTies.map(function(L){return META[L].name.split(' ')[0];}).join(' & ')+
+        '</b> — nhiều nhóm nổi trội ngang nhau. Đây là dấu hiệu của một người linh hoạt!</p>';
+    } else {
+      html += '<p>Xu hướng nổi trội của bạn là:</p>'+
+        '<p style="font-size:1.35rem;font-weight:800;color:'+META[top].color+';margin:4px 0">'+META[top].name+'</p>'+
+        '<p style="margin-top:0;color:#7c7468">'+META[top].tag+'</p>';
+    }
+    order.forEach(function(L){
+      var pct = Math.round(score[L]/total*100);
+      html += '<div class="bar"><div class="lbl" style="color:'+META[L].color+'">'+META[L].name.split(' — ')[0]+
+        ' · '+META[L].name.split(' — ')[1]+'</div>'+
+        '<div class="track"><div class="fill" data-w="'+pct+'" style="background:'+META[L].color+'"></div></div>'+
+        '<div class="pct">'+pct+'%</div></div>';
+    });
+    html += '<div style="text-align:center;margin-top:18px">'+
+      '<a class="btn" href="'+META[top].link+'">Đọc chi tiết về nhóm '+META[top].name.split(' ')[0]+'</a></div>'+
+      '<p style="text-align:center;color:#7c7468;font-size:.9rem;margin-bottom:0">Nhớ rằng: trong mỗi người luôn có đủ cả bốn yếu tố DISC 💛</p>';
+
+    res.hidden = false;
+    res.innerHTML = html;
+    document.getElementById('resetQuiz').hidden = false;
+    // animate bars
+    requestAnimationFrame(function(){
+      Array.prototype.forEach.call(res.querySelectorAll('.fill'), function(f){ f.style.width = f.getAttribute('data-w')+'%'; });
+    });
+    res.scrollIntoView({behavior:'smooth'});
+  }
+
+  document.getElementById('seeResult').addEventListener('click', showResult);
+  document.getElementById('resetQuiz').addEventListener('click', function(){
+    answers = {};
+    document.getElementById('result').hidden = true;
+    this.hidden = true;
+    render();
+    document.getElementById('test').scrollIntoView({behavior:'smooth'});
+  });
+
+  render();
+})();
+</script>
+
+</body>
+</html>
